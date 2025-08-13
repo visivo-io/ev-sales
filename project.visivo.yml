@@ -9,45 +9,180 @@ models:
   - name: sales_by_year
     source: ${ref(ev_db)}
     sql: |
-      SELECT * FROM ev_sales_by_year
+      WITH yearly_sales AS (
+        SELECT 
+          year AS Year,
+          SUM(CASE WHEN powertrain = 'BEV' THEN value ELSE 0 END) AS BEV_Sales,
+          SUM(CASE WHEN powertrain = 'PHEV' THEN value ELSE 0 END) AS PHEV_Sales,
+          SUM(value) AS Total_Sales
+        FROM ev_data
+        WHERE parameter = 'EV sales' 
+          AND category = 'Historical'
+          AND mode = 'Cars'
+          AND region_country = 'World'
+          AND powertrain IN ('BEV', 'PHEV')
+        GROUP BY year
+      )
+      SELECT * FROM yearly_sales
+      ORDER BY Year
 
   - name: top_countries
     source: ${ref(ev_db)}
     sql: |
-      SELECT * FROM top_countries_latest
+      WITH country_sales AS (
+        SELECT 
+          region_country AS Country,
+          SUM(value) AS EV_Sales
+        FROM ev_data
+        WHERE parameter = 'EV sales' 
+          AND category = 'Historical'
+          AND year = 2024
+          AND mode = 'Cars'
+          AND region_country NOT IN ('World', 'Europe', 'EU27', 'North America', 'Asia Pacific', 'Rest of world')
+          AND powertrain IN ('BEV', 'PHEV')
+        GROUP BY region_country
+      )
+      SELECT * FROM country_sales
+      ORDER BY EV_Sales DESC
+      LIMIT 10
 
   - name: market_share_2024
     source: ${ref(ev_db)}
     sql: |
-      SELECT Country, Market_Share, Total_Vehicle_Sales 
-      FROM ev_market_share WHERE Year = 2024
+      SELECT 
+        region_country AS Country,
+        value AS Market_Share,
+        0 AS Total_Vehicle_Sales
+      FROM ev_data
+      WHERE parameter = 'EV sales share' 
+        AND category = 'Historical'
+        AND year = 2024
+        AND mode = 'Cars'
+        AND region_country NOT IN ('World', 'Europe', 'EU27', 'North America', 'Asia Pacific', 'Rest of world')
 
   - name: regional_2024
     source: ${ref(ev_db)}
     sql: |
+      WITH regional_data AS (
+        SELECT 
+          CASE 
+            WHEN region_country IN ('Asia Pacific') THEN 'Asia Pacific'
+            WHEN region_country IN ('Europe', 'Other Europe') THEN 'Europe'
+            WHEN region_country IN ('North America') THEN 'North America'
+            WHEN region_country IN ('Africa') THEN 'Africa'
+            WHEN region_country IN ('Central and South America') THEN 'Central and South America'
+            WHEN region_country IN ('Middle East and Caspian') THEN 'Middle East'
+            WHEN region_country IN ('Rest of the world', 'Rest of world') THEN 'Other'
+          END as Region,
+          value AS EV_Sales
+        FROM ev_data
+        WHERE parameter = 'EV sales' 
+          AND category = 'Historical'
+          AND year = 2024
+          AND mode = 'Cars'
+          AND powertrain IN ('BEV', 'PHEV')
+          AND region_country NOT IN ('World')
+      )
       SELECT 
-        CASE 
-          WHEN Country IN ('China', 'Japan', 'South Korea', 'India') THEN 'Asia'
-          WHEN Country IN ('Germany', 'France', 'United Kingdom', 'Italy', 'Spain', 
-                          'Netherlands', 'Sweden', 'Norway', 'Denmark', 'Belgium', 'Switzerland') THEN 'Europe'
-          WHEN Country IN ('United States', 'Canada', 'Mexico') THEN 'North America'
-          WHEN Country IN ('Brazil') THEN 'South America'
-          WHEN Country IN ('Australia') THEN 'Oceania'
-        END as Region,
+        Region,
         SUM(EV_Sales) as Sales
-      FROM ev_sales
-      WHERE Year = 2024 AND Vehicle_Type = 'Total'
+      FROM regional_data
+      WHERE Region IS NOT NULL
       GROUP BY Region
+      ORDER BY Sales DESC
 
   - name: charging_growth
     source: ${ref(ev_db)}
     sql: |
       SELECT 
+        year AS Year,
+        SUM(value) AS Total_Points
+      FROM ev_data
+      WHERE parameter = 'EV charging points' 
+        AND category = 'Historical'
+        AND region_country = 'World'
+      GROUP BY year
+      ORDER BY year
+
+  - name: production_by_year
+    source: ${ref(ev_db)}
+    sql: |
+      WITH yearly_prod AS (
+        SELECT 
+          year AS Year,
+          SUM(value) AS Total_Production
+        FROM ev_data
+        WHERE parameter = 'EV stock' 
+          AND category = 'Historical'
+          AND mode = 'Cars'
+          AND region_country = 'World'
+          AND powertrain IN ('BEV', 'PHEV')
+        GROUP BY year
+      )
+      SELECT 
         Year,
-        SUM(Public_Charging_Points) as Total_Points
-      FROM ev_charging_stations
-      GROUP BY Year
+        Total_Production - LAG(Total_Production, 1, 0) OVER (ORDER BY Year) AS EV_Production
+      FROM yearly_prod
       ORDER BY Year
+
+  - name: top_production_countries
+    source: ${ref(ev_db)}
+    sql: |
+      WITH country_stock AS (
+        SELECT 
+          region_country AS Country,
+          SUM(CASE WHEN year = 2024 THEN value ELSE 0 END) AS stock_2024,
+          SUM(CASE WHEN year = 2023 THEN value ELSE 0 END) AS stock_2023
+        FROM ev_data
+        WHERE parameter = 'EV stock' 
+          AND category = 'Historical'
+          AND year IN (2023, 2024)
+          AND mode = 'Cars'
+          AND region_country NOT IN ('World', 'Europe', 'EU27', 'North America', 'Asia Pacific', 'Rest of world', 'Rest of the world', 'Central and South America')
+          AND powertrain IN ('BEV', 'PHEV')
+        GROUP BY region_country
+      )
+      SELECT 
+        Country,
+        (stock_2024 - stock_2023) AS EV_Production
+      FROM country_stock
+      WHERE stock_2024 > 0
+      ORDER BY EV_Production DESC
+      LIMIT 10
+
+  - name: sales_by_type_country
+    source: ${ref(ev_db)}
+    sql: |
+      SELECT 
+        region_country AS Country,
+        year AS Year,
+        mode AS Vehicle_Type,
+        powertrain AS Powertrain,
+        SUM(value) AS Sales
+      FROM ev_data
+      WHERE parameter = 'EV sales' 
+        AND category = 'Historical'
+        AND region_country NOT IN ('World', 'Europe', 'EU27', 'North America', 'Asia Pacific', 'Rest of world', 'Rest of the world', 'Central and South America')
+        AND year >= 2020
+      GROUP BY region_country, year, mode, powertrain
+      ORDER BY year DESC, Sales DESC
+
+  - name: avg_market_share_by_country
+    source: ${ref(ev_db)}
+    sql: |
+      SELECT 
+        region_country AS Country,
+        AVG(value) AS Avg_Market_Share,
+        COUNT(DISTINCT year) AS Years_Data
+      FROM ev_data
+      WHERE parameter = 'EV sales share' 
+        AND category = 'Historical'
+        AND mode = 'Cars'
+        AND region_country NOT IN ('World', 'Europe', 'EU27', 'North America', 'Asia Pacific', 'Rest of world')
+        AND year >= 2020
+      GROUP BY region_country
+      HAVING COUNT(DISTINCT year) >= 3
+      ORDER BY Avg_Market_Share DESC
 
 traces:
   - name: global_sales
@@ -56,11 +191,13 @@ traces:
       type: scatter
       x: ?{Year}
       y: ?{Total_Sales}
-      mode: lines+markers
+      mode: lines
       name: Total Sales
+      fill: tonexty
+      fillcolor: "rgba(30, 136, 229, 0.3)"
       line:
         color: "#1e88e5"
-        width: 3
+        width: 2
     order_by:
       - ?{Year}
 
@@ -72,6 +209,8 @@ traces:
       y: ?{BEV_Sales}
       mode: lines
       name: BEV Sales
+      fill: tonexty
+      fillcolor: "rgba(0, 137, 123, 0.4)"
       line:
         color: "#00897b"
         width: 2
@@ -86,6 +225,8 @@ traces:
       y: ?{PHEV_Sales}
       mode: lines
       name: PHEV Sales
+      fill: tozeroy
+      fillcolor: "rgba(255, 112, 67, 0.4)"
       line:
         color: "#ff7043"
         width: 2
@@ -94,17 +235,17 @@ traces:
 
   - name: countries_bar
     model: ${ref(top_countries)}
-    cohort_on: Country
     props:
       type: bar
       x: ?{Country}
       y: ?{EV_Sales}
       marker:
         color: "#5e35b1"
+    order_by:
+      - ?{EV_Sales}
 
   - name: regional_pie
     model: ${ref(regional_2024)}
-    cohort_on: Region
     props:
       type: pie
       labels: ?{Region}
@@ -112,7 +253,6 @@ traces:
 
   - name: charging_line
     model: ${ref(charging_growth)}
-    cohort_on: Year
     props:
       type: scatter
       x: ?{Year}
@@ -122,12 +262,36 @@ traces:
       line:
         color: "#ff6f00"
         width: 3
+    order_by:
+      - ?{Year}
+
+  - name: production_countries_bar
+    model: ${ref(top_production_countries)}
+    props:
+      type: bar
+      x: ?{Country}
+      y: ?{EV_Production}
+      marker:
+        color: "#9c27b0"
+    order_by:
+      - ?{EV_Production}
+
+  - name: avg_market_share_bar
+    model: ${ref(avg_market_share_by_country)}
+    props:
+      type: bar
+      x: ?{Country}
+      y: ?{Avg_Market_Share}
+      marker:
+        color: "#00acc1"
+    order_by:
+      - ?{Avg_Market_Share}
 
 charts:
   - name: global_trend
     traces:
-      - ${ref(global_sales)}
       - ${ref(bev_sales)}
+      - ${ref(global_sales)}
       - ${ref(phev_sales)}
     layout:
       title:
@@ -172,64 +336,41 @@ charts:
         title:
           text: Number of Charging Points
 
+  - name: top_production_chart
+    traces:
+      - ${ref(production_countries_bar)}
+    layout:
+      title:
+        text: Top 10 Countries by EV Production (2024)
+      xaxis:
+        title:
+          text: Country
+      yaxis:
+        title:
+          text: Vehicles Produced
+
+  - name: avg_market_share_chart
+    traces:
+      - ${ref(avg_market_share_bar)}
+    layout:
+      title:
+        text: Average EV Market Share by Country (2020-2024)
+      xaxis:
+        title:
+          text: Country
+      yaxis:
+        title:
+          text: Average Market Share (%)
+
 dashboards:
-  - name: main
+  - name: EV Overview Dashboard
     rows:
-      - height: small
+      - height: compact
         items:
           - markdown: |
               # Electric Vehicle Sales Dashboard
 
               This comprehensive dashboard analyzes global electric vehicle (EV) sales trends, market development, and infrastructure growth from 2015 to 2024.
-
-              ## Data Sources
-
-              This dashboard incorporates data from multiple authoritative sources on electric vehicle markets:
-
-              ### Primary Sources
-
-              - **International Energy Agency (IEA)**
-                - Global EV Outlook annual reports (2015-2024)
-                - Comprehensive country-level EV sales data
-                - Market share statistics and projections
-                - Source: [IEA Global EV Data Explorer](https://www.iea.org/data-and-statistics/data-tools/global-ev-data-explorer)
-
-              - **Our World in Data**
-                - Curated dataset based on IEA data
-                - Historical trends and comparative analysis
-                - Open access under Creative Commons license
-                - Source: [Our World in Data - Electric Car Sales](https://ourworldindata.org/electric-car-sales)
-
-              - **National Transportation Authorities**
-                - Country-specific registration databases
-                - Real-time market updates
-                - Vehicle classification standards
-
-              ### Data Coverage
-
-              - **Geographic**: 20 major markets including China, USA, Germany, Norway, and others
-              - **Temporal**: Annual data from 2015-2024 (10 years)
-              - **Vehicle Types**: Battery Electric Vehicles (BEV) and Plug-in Hybrid Electric Vehicles (PHEV)
-              - **Metrics**: Sales volumes, market share, cumulative stock, charging infrastructure
-
-              ### Data Quality & Limitations
-
-              - Data represents realistic trends based on published reports
-              - Some figures are modeled for demonstration purposes
-              - Production dashboards should connect directly to official APIs
-              - Regional classifications may vary by source
-
-              ### Methodology
-
-              - **Growth Rates**: Compound Annual Growth Rate (CAGR) 2015-2024
-              - **Market Share**: EV sales as percentage of total vehicle sales
-              - **Regional Groupings**: Based on geographic and economic similarities
-              - **Currency**: All figures in local vehicle units (not normalized)
-
-              ---
-
-              *Dashboard created with [Visivo](https://visivo.io)*  
-              *Last updated: August 2024*
 
       - height: medium
         items:
@@ -237,16 +378,22 @@ dashboards:
 
       - height: large
         items:
-          - width: 6
+          - width: 4
             chart: ${ref(top_countries_chart)}
-          - width: 6
+          - width: 4
+            chart: ${ref(top_production_chart)}
+          - width: 4
             chart: ${ref(regional_split)}
 
       - height: medium
         items:
           - chart: ${ref(charging_infra)}
 
-      - height: small
+      - height: medium
+        items:
+          - chart: ${ref(avg_market_share_chart)}
+
+      - height: xlarge
         items:
           - markdown: |
               ## Key Insights
@@ -266,7 +413,13 @@ dashboards:
               - Policy support remains crucial for market development
               - Infrastructure investment critical for sustained growth
 
+              ## Data Source
+
+              **International Energy Agency (IEA)**
+                - Global EV Outlook annual reports (2015-2024)
+                - Source: [IEA Global EV Data Explorer](https://www.iea.org/data-and-statistics/data-tools/global-ev-data-explorer)
+
               ---
 
-              **Data Sources**: IEA Global EV Outlook, Our World in Data  
-              **Methodology**: Based on official statistics and industry reports
+              *Dashboard created with [Visivo](https://visivo.io)*  
+              *Last updated: August 2024*
