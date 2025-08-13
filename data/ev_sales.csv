@@ -1,0 +1,601 @@
+Country,Year,EV_Sales,Vehicle_Type
+China,2015,181388,Total
+China,2015,108833,BEV
+China,2015,72555,PHEV
+United States,2015,111411,Total
+United States,2015,66847,BEV
+United States,2015,44565,PHEV
+Germany,2015,23936,Total
+Germany,2015,14361,BEV
+Germany,2015,9574,PHEV
+France,2015,17576,Total
+France,2015,10546,BEV
+France,2015,7030,PHEV
+United Kingdom,2015,14270,Total
+United Kingdom,2015,8562,BEV
+United Kingdom,2015,5708,PHEV
+Norway,2015,26263,Total
+Norway,2015,15758,BEV
+Norway,2015,10505,PHEV
+Netherlands,2015,9192,Total
+Netherlands,2015,5515,BEV
+Netherlands,2015,3677,PHEV
+Sweden,2015,8049,Total
+Sweden,2015,4830,BEV
+Sweden,2015,3220,PHEV
+Canada,2015,5660,Total
+Canada,2015,3396,BEV
+Canada,2015,2264,PHEV
+Japan,2015,9607,Total
+Japan,2015,5764,BEV
+Japan,2015,3843,PHEV
+South Korea,2015,2933,Total
+South Korea,2015,1760,BEV
+South Korea,2015,1173,PHEV
+India,2015,514,Total
+India,2015,309,BEV
+India,2015,206,PHEV
+Italy,2015,2152,Total
+Italy,2015,1291,BEV
+Italy,2015,861,PHEV
+Spain,2015,1391,Total
+Spain,2015,834,BEV
+Spain,2015,556,PHEV
+Australia,2015,765,Total
+Australia,2015,459,BEV
+Australia,2015,306,PHEV
+Brazil,2015,287,Total
+Brazil,2015,172,BEV
+Brazil,2015,115,PHEV
+Mexico,2015,214,Total
+Mexico,2015,128,BEV
+Mexico,2015,85,PHEV
+Denmark,2015,4351,Total
+Denmark,2015,2611,BEV
+Denmark,2015,1740,PHEV
+Belgium,2015,3167,Total
+Belgium,2015,1900,BEV
+Belgium,2015,1267,PHEV
+Switzerland,2015,3526,Total
+Switzerland,2015,2116,BEV
+Switzerland,2015,1410,PHEV
+China,2016,297064,Total
+China,2016,187150,BEV
+China,2016,109914,PHEV
+United States,2016,153164,Total
+United States,2016,96494,BEV
+United States,2016,56671,PHEV
+Germany,2016,35277,Total
+Germany,2016,22224,BEV
+Germany,2016,13052,PHEV
+France,2016,24982,Total
+France,2016,15739,BEV
+France,2016,9243,PHEV
+United Kingdom,2016,20148,Total
+United Kingdom,2016,12693,BEV
+United Kingdom,2016,7455,PHEV
+Norway,2016,29281,Total
+Norway,2016,18447,BEV
+Norway,2016,10834,PHEV
+Netherlands,2016,12190,Total
+Netherlands,2016,7679,BEV
+Netherlands,2016,4510,PHEV
+Sweden,2016,10459,Total
+Sweden,2016,6589,BEV
+Sweden,2016,3870,PHEV
+Canada,2016,7343,Total
+Canada,2016,4626,BEV
+Canada,2016,2717,PHEV
+Japan,2016,12778,Total
+Japan,2016,8050,BEV
+Japan,2016,4728,PHEV
+South Korea,2016,4368,Total
+South Korea,2016,2752,BEV
+South Korea,2016,1616,PHEV
+India,2016,848,Total
+India,2016,534,BEV
+India,2016,314,PHEV
+Italy,2016,3228,Total
+Italy,2016,2034,BEV
+Italy,2016,1194,PHEV
+Spain,2016,2057,Total
+Spain,2016,1296,BEV
+Spain,2016,761,PHEV
+Australia,2016,878,Total
+Australia,2016,553,BEV
+Australia,2016,325,PHEV
+Brazil,2016,451,Total
+Brazil,2016,284,BEV
+Brazil,2016,167,PHEV
+Mexico,2016,317,Total
+Mexico,2016,200,BEV
+Mexico,2016,117,PHEV
+Denmark,2016,6268,Total
+Denmark,2016,3949,BEV
+Denmark,2016,2319,PHEV
+Belgium,2016,4577,Total
+Belgium,2016,2883,BEV
+Belgium,2016,1693,PHEV
+Switzerland,2016,4685,Total
+Switzerland,2016,2952,BEV
+Switzerland,2016,1733,PHEV
+China,2017,394147,Total
+China,2017,260137,BEV
+China,2017,134010,PHEV
+United States,2017,189848,Total
+United States,2017,125300,BEV
+United States,2017,64548,PHEV
+Germany,2017,47152,Total
+Germany,2017,31120,BEV
+Germany,2017,16032,PHEV
+France,2017,29842,Total
+France,2017,19696,BEV
+France,2017,10146,PHEV
+United Kingdom,2017,26547,Total
+United Kingdom,2017,17521,BEV
+United Kingdom,2017,9026,PHEV
+Norway,2017,38309,Total
+Norway,2017,25284,BEV
+Norway,2017,13025,PHEV
+Netherlands,2017,17457,Total
+Netherlands,2017,11522,BEV
+Netherlands,2017,5936,PHEV
+Sweden,2017,16545,Total
+Sweden,2017,10920,BEV
+Sweden,2017,5625,PHEV
+Canada,2017,9528,Total
+Canada,2017,6289,BEV
+Canada,2017,3240,PHEV
+Japan,2017,14524,Total
+Japan,2017,9586,BEV
+Japan,2017,4938,PHEV
+South Korea,2017,6740,Total
+South Korea,2017,4448,BEV
+South Korea,2017,2292,PHEV
+India,2017,1363,Total
+India,2017,899,BEV
+India,2017,463,PHEV
+Italy,2017,3998,Total
+Italy,2017,2638,BEV
+Italy,2017,1359,PHEV
+Spain,2017,3074,Total
+Spain,2017,2029,BEV
+Spain,2017,1045,PHEV
+Australia,2017,1273,Total
+Australia,2017,840,BEV
+Australia,2017,433,PHEV
+Brazil,2017,656,Total
+Brazil,2017,433,BEV
+Brazil,2017,223,PHEV
+Mexico,2017,406,Total
+Mexico,2017,268,BEV
+Mexico,2017,138,PHEV
+Denmark,2017,8199,Total
+Denmark,2017,5411,BEV
+Denmark,2017,2788,PHEV
+Belgium,2017,5660,Total
+Belgium,2017,3736,BEV
+Belgium,2017,1925,PHEV
+Switzerland,2017,6758,Total
+Switzerland,2017,4461,BEV
+Switzerland,2017,2298,PHEV
+China,2018,562808,Total
+China,2018,388338,BEV
+China,2018,174471,PHEV
+United States,2018,301122,Total
+United States,2018,207774,BEV
+United States,2018,93348,PHEV
+Germany,2018,69698,Total
+Germany,2018,48092,BEV
+Germany,2018,21606,PHEV
+France,2018,47602,Total
+France,2018,32846,BEV
+France,2018,14757,PHEV
+United Kingdom,2018,42451,Total
+United Kingdom,2018,29291,BEV
+United Kingdom,2018,13160,PHEV
+Norway,2018,46096,Total
+Norway,2018,31806,BEV
+Norway,2018,14290,PHEV
+Netherlands,2018,21115,Total
+Netherlands,2018,14569,BEV
+Netherlands,2018,6546,PHEV
+Sweden,2018,19239,Total
+Sweden,2018,13275,BEV
+Sweden,2018,5964,PHEV
+Canada,2018,11752,Total
+Canada,2018,8109,BEV
+Canada,2018,3643,PHEV
+Japan,2018,17445,Total
+Japan,2018,12037,BEV
+Japan,2018,5408,PHEV
+South Korea,2018,9582,Total
+South Korea,2018,6611,BEV
+South Korea,2018,2970,PHEV
+India,2018,2036,Total
+India,2018,1405,BEV
+India,2018,631,PHEV
+Italy,2018,5500,Total
+Italy,2018,3795,BEV
+Italy,2018,1705,PHEV
+Spain,2018,4383,Total
+Spain,2018,3024,BEV
+Spain,2018,1359,PHEV
+Australia,2018,1832,Total
+Australia,2018,1264,BEV
+Australia,2018,568,PHEV
+Brazil,2018,917,Total
+Brazil,2018,633,BEV
+Brazil,2018,284,PHEV
+Mexico,2018,696,Total
+Mexico,2018,480,BEV
+Mexico,2018,216,PHEV
+Denmark,2018,11380,Total
+Denmark,2018,7852,BEV
+Denmark,2018,3528,PHEV
+Belgium,2018,7698,Total
+Belgium,2018,5312,BEV
+Belgium,2018,2386,PHEV
+Switzerland,2018,9558,Total
+Switzerland,2018,6595,BEV
+Switzerland,2018,2963,PHEV
+China,2019,884063,Total
+China,2019,636526,BEV
+China,2019,247538,PHEV
+United States,2019,345627,Total
+United States,2019,248851,BEV
+United States,2019,96775,PHEV
+Germany,2019,97460,Total
+Germany,2019,70171,BEV
+Germany,2019,27289,PHEV
+France,2019,68417,Total
+France,2019,49260,BEV
+France,2019,19157,PHEV
+United Kingdom,2019,60225,Total
+United Kingdom,2019,43362,BEV
+United Kingdom,2019,16863,PHEV
+Norway,2019,59135,Total
+Norway,2019,42577,BEV
+Norway,2019,16558,PHEV
+Netherlands,2019,32977,Total
+Netherlands,2019,23744,BEV
+Netherlands,2019,9234,PHEV
+Sweden,2019,27529,Total
+Sweden,2019,19821,BEV
+Sweden,2019,7708,PHEV
+Canada,2019,14009,Total
+Canada,2019,10086,BEV
+Canada,2019,3923,PHEV
+Japan,2019,21358,Total
+Japan,2019,15378,BEV
+Japan,2019,5980,PHEV
+South Korea,2019,15034,Total
+South Korea,2019,10824,BEV
+South Korea,2019,4210,PHEV
+India,2019,3249,Total
+India,2019,2339,BEV
+India,2019,910,PHEV
+Italy,2019,7010,Total
+Italy,2019,5047,BEV
+Italy,2019,1963,PHEV
+Spain,2019,5563,Total
+Spain,2019,4005,BEV
+Spain,2019,1558,PHEV
+Australia,2019,2123,Total
+Australia,2019,1529,BEV
+Australia,2019,595,PHEV
+Brazil,2019,1285,Total
+Brazil,2019,925,BEV
+Brazil,2019,360,PHEV
+Mexico,2019,956,Total
+Mexico,2019,688,BEV
+Mexico,2019,268,PHEV
+Denmark,2019,14473,Total
+Denmark,2019,10421,BEV
+Denmark,2019,4052,PHEV
+Belgium,2019,9857,Total
+Belgium,2019,7097,BEV
+Belgium,2019,2760,PHEV
+Switzerland,2019,12472,Total
+Switzerland,2019,8980,BEV
+Switzerland,2019,3492,PHEV
+China,2020,1277678,Total
+China,2020,958258,BEV
+China,2020,319419,PHEV
+United States,2020,562181,Total
+United States,2020,421636,BEV
+United States,2020,140545,PHEV
+Germany,2020,118851,Total
+Germany,2020,89139,BEV
+Germany,2020,29713,PHEV
+France,2020,93875,Total
+France,2020,70406,BEV
+France,2020,23469,PHEV
+United Kingdom,2020,81158,Total
+United Kingdom,2020,60869,BEV
+United Kingdom,2020,20290,PHEV
+Norway,2020,72773,Total
+Norway,2020,54580,BEV
+Norway,2020,18193,PHEV
+Netherlands,2020,42696,Total
+Netherlands,2020,32022,BEV
+Netherlands,2020,10674,PHEV
+Sweden,2020,40591,Total
+Sweden,2020,30443,BEV
+Sweden,2020,10148,PHEV
+Canada,2020,18532,Total
+Canada,2020,13899,BEV
+Canada,2020,4633,PHEV
+Japan,2020,24428,Total
+Japan,2020,18321,BEV
+Japan,2020,6107,PHEV
+South Korea,2020,20254,Total
+South Korea,2020,15190,BEV
+South Korea,2020,5063,PHEV
+India,2020,5592,Total
+India,2020,4194,BEV
+India,2020,1398,PHEV
+Italy,2020,11002,Total
+Italy,2020,8251,BEV
+Italy,2020,2750,PHEV
+Spain,2020,8563,Total
+Spain,2020,6422,BEV
+Spain,2020,2141,PHEV
+Australia,2020,3344,Total
+Australia,2020,2508,BEV
+Australia,2020,836,PHEV
+Brazil,2020,1980,Total
+Brazil,2020,1485,BEV
+Brazil,2020,495,PHEV
+Mexico,2020,1466,Total
+Mexico,2020,1100,BEV
+Mexico,2020,367,PHEV
+Denmark,2020,17133,Total
+Denmark,2020,12850,BEV
+Denmark,2020,4283,PHEV
+Belgium,2020,14115,Total
+Belgium,2020,10586,BEV
+Belgium,2020,3529,PHEV
+Switzerland,2020,16301,Total
+Switzerland,2020,12225,BEV
+Switzerland,2020,4075,PHEV
+China,2021,1693019,Total
+China,2021,1320555,BEV
+China,2021,372464,PHEV
+United States,2021,681815,Total
+United States,2021,531815,BEV
+United States,2021,149999,PHEV
+Germany,2021,163691,Total
+Germany,2021,127679,BEV
+Germany,2021,36012,PHEV
+France,2021,110590,Total
+France,2021,86260,BEV
+France,2021,24330,PHEV
+United Kingdom,2021,123324,Total
+United Kingdom,2021,96193,BEV
+United Kingdom,2021,27131,PHEV
+Norway,2021,88817,Total
+Norway,2021,69277,BEV
+Norway,2021,19540,PHEV
+Netherlands,2021,57020,Total
+Netherlands,2021,44475,BEV
+Netherlands,2021,12544,PHEV
+Sweden,2021,51794,Total
+Sweden,2021,40399,BEV
+Sweden,2021,11395,PHEV
+Canada,2021,27171,Total
+Canada,2021,21193,BEV
+Canada,2021,5978,PHEV
+Japan,2021,29325,Total
+Japan,2021,22873,BEV
+Japan,2021,6451,PHEV
+South Korea,2021,34496,Total
+South Korea,2021,26907,BEV
+South Korea,2021,7589,PHEV
+India,2021,8969,Total
+India,2021,6996,BEV
+India,2021,1973,PHEV
+Italy,2021,13575,Total
+Italy,2021,10589,BEV
+Italy,2021,2987,PHEV
+Spain,2021,12072,Total
+Spain,2021,9417,BEV
+Spain,2021,2656,PHEV
+Australia,2021,4032,Total
+Australia,2021,3145,BEV
+Australia,2021,887,PHEV
+Brazil,2021,2958,Total
+Brazil,2021,2307,BEV
+Brazil,2021,651,PHEV
+Mexico,2021,2277,Total
+Mexico,2021,1776,BEV
+Mexico,2021,501,PHEV
+Denmark,2021,26000,Total
+Denmark,2021,20280,BEV
+Denmark,2021,5720,PHEV
+Belgium,2021,19286,Total
+Belgium,2021,15043,BEV
+Belgium,2021,4243,PHEV
+Switzerland,2021,20470,Total
+Switzerland,2021,15966,BEV
+Switzerland,2021,4503,PHEV
+China,2022,2663570,Total
+China,2022,2157492,BEV
+China,2022,506078,PHEV
+United States,2022,1012448,Total
+United States,2022,820083,BEV
+United States,2022,192365,PHEV
+Germany,2022,267176,Total
+Germany,2022,216412,BEV
+Germany,2022,50763,PHEV
+France,2022,166859,Total
+France,2022,135156,BEV
+France,2022,31703,PHEV
+United Kingdom,2022,153178,Total
+United Kingdom,2022,124074,BEV
+United Kingdom,2022,29104,PHEV
+Norway,2022,134698,Total
+Norway,2022,109106,BEV
+Norway,2022,25593,PHEV
+Netherlands,2022,69350,Total
+Netherlands,2022,56173,BEV
+Netherlands,2022,13176,PHEV
+Sweden,2022,79729,Total
+Sweden,2022,64580,BEV
+Sweden,2022,15148,PHEV
+Canada,2022,34868,Total
+Canada,2022,28243,BEV
+Canada,2022,6625,PHEV
+Japan,2022,39484,Total
+Japan,2022,31982,BEV
+Japan,2022,7502,PHEV
+South Korea,2022,49439,Total
+South Korea,2022,40046,BEV
+South Korea,2022,9393,PHEV
+India,2022,14241,Total
+India,2022,11535,BEV
+India,2022,2706,PHEV
+Italy,2022,18615,Total
+Italy,2022,15078,BEV
+Italy,2022,3537,PHEV
+Spain,2022,14721,Total
+Spain,2022,11924,BEV
+Spain,2022,2797,PHEV
+Australia,2022,5537,Total
+Australia,2022,4485,BEV
+Australia,2022,1052,PHEV
+Brazil,2022,4336,Total
+Brazil,2022,3512,BEV
+Brazil,2022,824,PHEV
+Mexico,2022,3492,Total
+Mexico,2022,2829,BEV
+Mexico,2022,664,PHEV
+Denmark,2022,31616,Total
+Denmark,2022,25609,BEV
+Denmark,2022,6007,PHEV
+Belgium,2022,28962,Total
+Belgium,2022,23459,BEV
+Belgium,2022,5503,PHEV
+Switzerland,2022,28413,Total
+Switzerland,2022,23015,BEV
+Switzerland,2022,5398,PHEV
+China,2023,3393318,Total
+China,2023,2850387,BEV
+China,2023,542931,PHEV
+United States,2023,1351792,Total
+United States,2023,1135506,BEV
+United States,2023,216287,PHEV
+Germany,2023,331272,Total
+Germany,2023,278269,BEV
+Germany,2023,53004,PHEV
+France,2023,224392,Total
+France,2023,188490,BEV
+France,2023,35903,PHEV
+United Kingdom,2023,215004,Total
+United Kingdom,2023,180603,BEV
+United Kingdom,2023,34401,PHEV
+Norway,2023,152481,Total
+Norway,2023,128084,BEV
+Norway,2023,24397,PHEV
+Netherlands,2023,112285,Total
+Netherlands,2023,94320,BEV
+Netherlands,2023,17966,PHEV
+Sweden,2023,95238,Total
+Sweden,2023,80000,BEV
+Sweden,2023,15238,PHEV
+Canada,2023,39079,Total
+Canada,2023,32826,BEV
+Canada,2023,6253,PHEV
+Japan,2023,48246,Total
+Japan,2023,40527,BEV
+Japan,2023,7719,PHEV
+South Korea,2023,81453,Total
+South Korea,2023,68420,BEV
+South Korea,2023,13032,PHEV
+India,2023,21206,Total
+India,2023,17813,BEV
+India,2023,3393,PHEV
+Italy,2023,24153,Total
+Italy,2023,20289,BEV
+Italy,2023,3865,PHEV
+Spain,2023,20155,Total
+Spain,2023,16930,BEV
+Spain,2023,3225,PHEV
+Australia,2023,8032,Total
+Australia,2023,6747,BEV
+Australia,2023,1285,PHEV
+Brazil,2023,5455,Total
+Brazil,2023,4582,BEV
+Brazil,2023,873,PHEV
+Mexico,2023,5247,Total
+Mexico,2023,4408,BEV
+Mexico,2023,840,PHEV
+Denmark,2023,46033,Total
+Denmark,2023,38668,BEV
+Denmark,2023,7365,PHEV
+Belgium,2023,37708,Total
+Belgium,2023,31675,BEV
+Belgium,2023,6033,PHEV
+Switzerland,2023,41396,Total
+Switzerland,2023,34773,BEV
+Switzerland,2023,6623,PHEV
+China,2024,5726263,Total
+China,2024,4981849,BEV
+China,2024,744414,PHEV
+United States,2024,1666874,Total
+United States,2024,1450180,BEV
+United States,2024,216694,PHEV
+Germany,2024,524832,Total
+Germany,2024,456604,BEV
+Germany,2024,68228,PHEV
+France,2024,316373,Total
+France,2024,275245,BEV
+France,2024,41129,PHEV
+United Kingdom,2024,327611,Total
+United Kingdom,2024,285021,BEV
+United Kingdom,2024,42589,PHEV
+Norway,2024,185587,Total
+Norway,2024,161461,BEV
+Norway,2024,24126,PHEV
+Netherlands,2024,140884,Total
+Netherlands,2024,122569,BEV
+Netherlands,2024,18315,PHEV
+Sweden,2024,151049,Total
+Sweden,2024,131413,BEV
+Sweden,2024,19636,PHEV
+Canada,2024,58001,Total
+Canada,2024,50461,BEV
+Canada,2024,7540,PHEV
+Japan,2024,50747,Total
+Japan,2024,44150,BEV
+Japan,2024,6597,PHEV
+South Korea,2024,109789,Total
+South Korea,2024,95516,BEV
+South Korea,2024,14273,PHEV
+India,2024,34728,Total
+India,2024,30213,BEV
+India,2024,4515,PHEV
+Italy,2024,36521,Total
+Italy,2024,31773,BEV
+Italy,2024,4748,PHEV
+Spain,2024,31914,Total
+Spain,2024,27766,BEV
+Spain,2024,4149,PHEV
+Australia,2024,10605,Total
+Australia,2024,9227,BEV
+Australia,2024,1379,PHEV
+Brazil,2024,9341,Total
+Brazil,2024,8127,BEV
+Brazil,2024,1214,PHEV
+Mexico,2024,7048,Total
+Mexico,2024,6132,BEV
+Mexico,2024,916,PHEV
+Denmark,2024,61733,Total
+Denmark,2024,53708,BEV
+Denmark,2024,8025,PHEV
+Belgium,2024,54376,Total
+Belgium,2024,47307,BEV
+Belgium,2024,7069,PHEV
+Switzerland,2024,57220,Total
+Switzerland,2024,49781,BEV
+Switzerland,2024,7439,PHEV

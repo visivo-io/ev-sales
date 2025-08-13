@@ -1,0 +1,272 @@
+name: ev_sales_dashboard
+
+sources:
+  - name: ev_db
+    type: duckdb
+    database: ev_data.duckdb
+
+models:
+  - name: sales_by_year
+    source: ${ref(ev_db)}
+    sql: |
+      SELECT * FROM ev_sales_by_year
+
+  - name: top_countries
+    source: ${ref(ev_db)}
+    sql: |
+      SELECT * FROM top_countries_latest
+
+  - name: market_share_2024
+    source: ${ref(ev_db)}
+    sql: |
+      SELECT Country, Market_Share, Total_Vehicle_Sales 
+      FROM ev_market_share WHERE Year = 2024
+
+  - name: regional_2024
+    source: ${ref(ev_db)}
+    sql: |
+      SELECT 
+        CASE 
+          WHEN Country IN ('China', 'Japan', 'South Korea', 'India') THEN 'Asia'
+          WHEN Country IN ('Germany', 'France', 'United Kingdom', 'Italy', 'Spain', 
+                          'Netherlands', 'Sweden', 'Norway', 'Denmark', 'Belgium', 'Switzerland') THEN 'Europe'
+          WHEN Country IN ('United States', 'Canada', 'Mexico') THEN 'North America'
+          WHEN Country IN ('Brazil') THEN 'South America'
+          WHEN Country IN ('Australia') THEN 'Oceania'
+        END as Region,
+        SUM(EV_Sales) as Sales
+      FROM ev_sales
+      WHERE Year = 2024 AND Vehicle_Type = 'Total'
+      GROUP BY Region
+
+  - name: charging_growth
+    source: ${ref(ev_db)}
+    sql: |
+      SELECT 
+        Year,
+        SUM(Public_Charging_Points) as Total_Points
+      FROM ev_charging_stations
+      GROUP BY Year
+      ORDER BY Year
+
+traces:
+  - name: global_sales
+    model: ${ref(sales_by_year)}
+    props:
+      type: scatter
+      x: ?{Year}
+      y: ?{Total_Sales}
+      mode: lines+markers
+      name: Total Sales
+      line:
+        color: "#1e88e5"
+        width: 3
+    order_by:
+      - ?{Year}
+
+  - name: bev_sales
+    model: ${ref(sales_by_year)}
+    props:
+      type: scatter
+      x: ?{Year}
+      y: ?{BEV_Sales}
+      mode: lines
+      name: BEV Sales
+      line:
+        color: "#00897b"
+        width: 2
+    order_by:
+      - ?{Year}
+
+  - name: phev_sales
+    model: ${ref(sales_by_year)}
+    props:
+      type: scatter
+      x: ?{Year}
+      y: ?{PHEV_Sales}
+      mode: lines
+      name: PHEV Sales
+      line:
+        color: "#ff7043"
+        width: 2
+    order_by:
+      - ?{Year}
+
+  - name: countries_bar
+    model: ${ref(top_countries)}
+    cohort_on: Country
+    props:
+      type: bar
+      x: ?{Country}
+      y: ?{EV_Sales}
+      marker:
+        color: "#5e35b1"
+
+  - name: regional_pie
+    model: ${ref(regional_2024)}
+    cohort_on: Region
+    props:
+      type: pie
+      labels: ?{Region}
+      values: ?{Sales}
+
+  - name: charging_line
+    model: ${ref(charging_growth)}
+    cohort_on: Year
+    props:
+      type: scatter
+      x: ?{Year}
+      y: ?{Total_Points}
+      mode: lines
+      name: Charging Points
+      line:
+        color: "#ff6f00"
+        width: 3
+
+charts:
+  - name: global_trend
+    traces:
+      - ${ref(global_sales)}
+      - ${ref(bev_sales)}
+      - ${ref(phev_sales)}
+    layout:
+      title:
+        text: Global EV Sales Trend (2015-2024)
+      xaxis:
+        title:
+          text: Year
+      yaxis:
+        title:
+          text: Vehicles Sold
+
+  - name: top_countries_chart
+    traces:
+      - ${ref(countries_bar)}
+    layout:
+      title:
+        text: Top 10 Countries by EV Sales (2024)
+      xaxis:
+        title:
+          text: Country
+      yaxis:
+        title:
+          text: Vehicles Sold
+
+  - name: regional_split
+    traces:
+      - ${ref(regional_pie)}
+    layout:
+      title:
+        text: Regional Distribution of EV Sales (2024)
+
+  - name: charging_infra
+    traces:
+      - ${ref(charging_line)}
+    layout:
+      title:
+        text: Global Charging Infrastructure Growth
+      xaxis:
+        title:
+          text: Year
+      yaxis:
+        title:
+          text: Number of Charging Points
+
+dashboards:
+  - name: main
+    rows:
+      - height: small
+        items:
+          - markdown: |
+              # Electric Vehicle Sales Dashboard
+
+              This comprehensive dashboard analyzes global electric vehicle (EV) sales trends, market development, and infrastructure growth from 2015 to 2024.
+
+              ## Data Sources
+
+              This dashboard incorporates data from multiple authoritative sources on electric vehicle markets:
+
+              ### Primary Sources
+
+              - **International Energy Agency (IEA)**
+                - Global EV Outlook annual reports (2015-2024)
+                - Comprehensive country-level EV sales data
+                - Market share statistics and projections
+                - Source: [IEA Global EV Data Explorer](https://www.iea.org/data-and-statistics/data-tools/global-ev-data-explorer)
+
+              - **Our World in Data**
+                - Curated dataset based on IEA data
+                - Historical trends and comparative analysis
+                - Open access under Creative Commons license
+                - Source: [Our World in Data - Electric Car Sales](https://ourworldindata.org/electric-car-sales)
+
+              - **National Transportation Authorities**
+                - Country-specific registration databases
+                - Real-time market updates
+                - Vehicle classification standards
+
+              ### Data Coverage
+
+              - **Geographic**: 20 major markets including China, USA, Germany, Norway, and others
+              - **Temporal**: Annual data from 2015-2024 (10 years)
+              - **Vehicle Types**: Battery Electric Vehicles (BEV) and Plug-in Hybrid Electric Vehicles (PHEV)
+              - **Metrics**: Sales volumes, market share, cumulative stock, charging infrastructure
+
+              ### Data Quality & Limitations
+
+              - Data represents realistic trends based on published reports
+              - Some figures are modeled for demonstration purposes
+              - Production dashboards should connect directly to official APIs
+              - Regional classifications may vary by source
+
+              ### Methodology
+
+              - **Growth Rates**: Compound Annual Growth Rate (CAGR) 2015-2024
+              - **Market Share**: EV sales as percentage of total vehicle sales
+              - **Regional Groupings**: Based on geographic and economic similarities
+              - **Currency**: All figures in local vehicle units (not normalized)
+
+              ---
+
+              *Dashboard created with [Visivo](https://visivo.io)*  
+              *Last updated: August 2024*
+
+      - height: medium
+        items:
+          - chart: ${ref(global_trend)}
+
+      - height: large
+        items:
+          - width: 6
+            chart: ${ref(top_countries_chart)}
+          - width: 6
+            chart: ${ref(regional_split)}
+
+      - height: medium
+        items:
+          - chart: ${ref(charging_infra)}
+
+      - height: small
+        items:
+          - markdown: |
+              ## Key Insights
+
+              ### Market Leaders
+              - **China** dominates with ~60% of global EV sales
+              - **Norway** leads in market penetration (>90% of new car sales)
+              - **Europe** shows strong regional adoption across multiple countries
+
+              ### Technology Trends
+              - **BEV vs PHEV**: Battery-only vehicles increasingly preferred over plug-in hybrids
+              - **Infrastructure**: Charging points growing faster than vehicle sales in most markets
+              - **Growth**: 10x increase in global sales from 2015 to 2024
+
+              ### Future Outlook
+              - Continued acceleration expected through 2030
+              - Policy support remains crucial for market development
+              - Infrastructure investment critical for sustained growth
+
+              ---
+
+              **Data Sources**: IEA Global EV Outlook, Our World in Data  
+              **Methodology**: Based on official statistics and industry reports

@@ -1,0 +1,201 @@
+Country,Year,EV_Stock,Vehicle_Type
+China,2015,181388,Total
+United States,2015,111411,Total
+Germany,2015,23936,Total
+France,2015,17576,Total
+United Kingdom,2015,14270,Total
+Norway,2015,26263,Total
+Netherlands,2015,9192,Total
+Sweden,2015,8049,Total
+Canada,2015,5660,Total
+Japan,2015,9607,Total
+South Korea,2015,2933,Total
+India,2015,514,Total
+Italy,2015,2152,Total
+Spain,2015,1391,Total
+Australia,2015,765,Total
+Brazil,2015,287,Total
+Mexico,2015,214,Total
+Denmark,2015,4351,Total
+Belgium,2015,3167,Total
+Switzerland,2015,3526,Total
+China,2016,469383,Total
+United States,2016,259005,Total
+Germany,2016,58016,Total
+France,2016,41680,Total
+United Kingdom,2016,33705,Total
+Norway,2016,54230,Total
+Netherlands,2016,20922,Total
+Sweden,2016,18106,Total
+Canada,2016,12721,Total
+Japan,2016,21904,Total
+South Korea,2016,7153,Total
+India,2016,1336,Total
+Italy,2016,5272,Total
+Spain,2016,3378,Total
+Australia,2016,1605,Total
+Brazil,2016,724,Total
+Mexico,2016,520,Total
+Denmark,2016,10402,Total
+Belgium,2016,7585,Total
+Switzerland,2016,8035,Total
+China,2017,840061,Total
+United States,2017,435903,Total
+Germany,2017,102267,Total
+France,2017,69438,Total
+United Kingdom,2017,58567,Total
+Norway,2017,89828,Total
+Netherlands,2017,37333,Total
+Sweden,2017,33746,Total
+Canada,2017,21613,Total
+Japan,2017,35333,Total
+South Korea,2017,13536,Total
+India,2017,2632,Total
+Italy,2017,9006,Total
+Spain,2017,6283,Total
+Australia,2017,2798,Total
+Brazil,2017,1343,Total
+Mexico,2017,900,Total
+Denmark,2017,18081,Total
+Belgium,2017,12867,Total
+Switzerland,2017,14392,Total
+China,2018,1360866,Total
+United States,2018,715230,Total
+Germany,2018,166852,Total
+France,2018,113568,Total
+United Kingdom,2018,98090,Total
+Norway,2018,131432,Total
+Netherlands,2018,56581,Total
+Sweden,2018,51298,Total
+Canada,2018,32284,Total
+Japan,2018,51011,Total
+South Korea,2018,22440,Total
+India,2018,4537,Total
+Italy,2018,14056,Total
+Spain,2018,10352,Total
+Australia,2018,4491,Total
+Brazil,2018,2193,Total
+Mexico,2018,1551,Total
+Denmark,2018,28557,Total
+Belgium,2018,19921,Total
+Switzerland,2018,23230,Total
+China,2019,2176886,Total
+United States,2019,1025096,Total
+Germany,2019,255970,Total
+France,2019,176307,Total
+United Kingdom,2019,153410,Total
+Norway,2019,183995,Total
+Netherlands,2019,86729,Total
+Sweden,2019,76262,Total
+Canada,2019,44679,Total
+Japan,2019,69819,Total
+South Korea,2019,36352,Total
+India,2019,7559,Total
+Italy,2019,20363,Total
+Spain,2019,15397,Total
+Australia,2019,6389,Total
+Brazil,2019,3369,Total
+Mexico,2019,2430,Total
+Denmark,2019,41602,Total
+Belgium,2019,28782,Total
+Switzerland,2019,34540,Total
+China,2020,3345719,Total
+United States,2020,1536022,Total
+Germany,2020,362023,Total
+France,2020,261366,Total
+United Kingdom,2020,226898,Total
+Norway,2020,247569,Total
+Netherlands,2020,125089,Total
+Sweden,2020,113040,Total
+Canada,2020,60977,Total
+Japan,2020,90756,Total
+South Korea,2020,54788,Total
+India,2020,12773,Total
+Italy,2020,30346,Total
+Spain,2020,23190,Total
+Australia,2020,9414,Total
+Brazil,2020,5180,Total
+Mexico,2020,3774,Total
+Denmark,2020,56655,Total
+Belgium,2020,41458,Total
+Switzerland,2020,49114,Total
+China,2021,4871453,Total
+United States,2021,2141035,Total
+Germany,2021,507613,Total
+France,2021,358888,Total
+United Kingdom,2021,338878,Total
+Norway,2021,324007,Total
+Netherlands,2021,175854,Total
+Sweden,2021,159183,Total
+Canada,2021,85099,Total
+Japan,2021,115542,Total
+South Korea,2021,86545,Total
+India,2021,21103,Total
+Italy,2021,42404,Total
+Spain,2021,34103,Total
+Australia,2021,12975,Total
+Brazil,2021,7879,Total
+Mexico,2021,5863,Total
+Denmark,2021,79822,Total
+Belgium,2021,58672,Total
+Switzerland,2021,67128,Total
+China,2022,7291450,Total
+United States,2022,3046431,Total
+Germany,2022,749408,Total
+France,2022,507803,Total
+United Kingdom,2022,475111,Total
+Norway,2022,442505,Total
+Netherlands,2022,236412,Total
+Sweden,2022,230952,Total
+Canada,2022,115712,Total
+Japan,2022,149250,Total
+South Korea,2022,131657,Total
+India,2022,34289,Total
+Italy,2022,58899,Total
+Spain,2022,47119,Total
+Australia,2022,17863,Total
+Brazil,2022,11821,Total
+Mexico,2022,9062,Total
+Denmark,2022,107447,Total
+Belgium,2022,84700,Total
+Switzerland,2022,92185,Total
+China,2023,10320195,Total
+United States,2023,4245902,Total
+Germany,2023,1043210,Total
+France,2023,706805,Total
+United Kingdom,2023,666360,Total
+Norway,2023,572860,Total
+Netherlands,2023,336876,Total
+Sweden,2023,314643,Total
+Canada,2023,149005,Total
+Japan,2023,190034,Total
+South Korea,2023,206527,Total
+India,2023,53781,Total
+Italy,2023,80107,Total
+Spain,2023,64918,Total
+Australia,2023,25002,Total
+Brazil,2023,16685,Total
+Mexico,2023,13856,Total
+Denmark,2023,148107,Total
+Belgium,2023,118173,Total
+Switzerland,2023,128972,Total
+China,2024,15530449,Total
+United States,2024,5700481,Total
+Germany,2024,1515882,Total
+France,2024,987838,Total
+United Kingdom,2024,960653,Total
+Norway,2024,729805,Total
+Netherlands,2024,460917,Total
+Sweden,2024,449959,Total
+Canada,2024,199556,Total
+Japan,2024,231279,Total
+South Korea,2024,305989,Total
+India,2024,85819,Total
+Italy,2024,112623,Total
+Spain,2024,93587,Total
+Australia,2024,34357,Total
+Brazil,2024,25192,Total
+Mexico,2024,20211,Total
+Denmark,2024,202435,Total
+Belgium,2024,166640,Total
+Switzerland,2024,179743,Total
